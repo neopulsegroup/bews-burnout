@@ -1,6 +1,6 @@
 # BEWS Group — Website
 
-**Burnout Early Warning System — Organizational Early Warning Intelligence**
+**Burnout Early Warning System — AI Burnout Early Warning System (BEWS)**
 
 ## Estrutura de Ficheiros
 
