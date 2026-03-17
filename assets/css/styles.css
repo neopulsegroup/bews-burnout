@@ -22,7 +22,7 @@ button{font-family:var(--font);cursor:pointer}
   border-bottom:1px solid rgba(111,159,142,0.13);
 }
 .nav-logo{display:flex;align-items:center;cursor:pointer;flex-shrink:0}
-.nav-logo img{height:42px;width:auto;object-fit:contain;mix-blend-mode:multiply}
+.nav-logo img{height:48px;width:auto;object-fit:contain;mix-blend-mode:multiply}
 .nav-links{display:flex;align-items:center;gap:32px;list-style:none;flex:1;justify-content:center}
 .nav-links a{
   font-size:14px;font-weight:400;color:var(--mid);
