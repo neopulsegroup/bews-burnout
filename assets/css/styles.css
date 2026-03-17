@@ -196,13 +196,16 @@ button{font-family:var(--font);cursor:pointer}
 .check-list li::before{content:'✓';position:absolute;left:0;color:var(--sage);font-weight:600;font-size:13px;top:10px}
 
 /* ─── COMPETENCIES ─── */
-.comp-list{margin-top:12px}
-.comp-item{padding:24px 0;border-bottom:1px solid rgba(0,0,0,.07)}
-.comp-item:first-child{border-top:1px solid rgba(0,0,0,.07)}
-.comp-head{display:flex;align-items:center;gap:12px;margin-bottom:8px}
-.comp-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
-.comp-item h4{font-size:17px;font-weight:600}
-.comp-item p{font-size:14px;color:var(--mid);padding-left:20px}
+.comp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:32px}
+.comp-card{
+  background:var(--white);border:1px solid rgba(0,0,0,.07);border-radius:12px;
+  aspect-ratio:1/1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:24px;transition:transform .2s,box-shadow .2s;
+}
+.comp-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(47,52,57,.08)}
+.comp-icon-box{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.comp-card h4{font-size:15px;font-weight:600;line-height:1.2;margin-bottom:12px;max-width:140px}
+.comp-card p{font-size:13px;color:var(--mid);line-height:1.6;margin:0}
 
 /* ─── FUTURE STRIP ─── */
 .future{background:linear-gradient(135deg,#F0F6F4 0%,#EEF2F3 100%);padding:80px;text-align:center}
@@ -319,7 +322,7 @@ button{font-family:var(--font);cursor:pointer}
   .nav-links{display:none}
   .sec,.sec-sm{padding:56px 24px}
   .hero-content{padding:48px 24px 80px}
-  .two-col,.pillars,.how-cards,.feat-grid,.ben-row,.where-grid,.contact-grid,.addr-grid,.ofg-grid{grid-template-columns:1fr}
+  .two-col,.pillars,.how-cards,.feat-grid,.ben-row,.where-grid,.contact-grid,.addr-grid,.ofg-grid,.comp-grid{grid-template-columns:1fr}
   .two-col.flip>*{order:unset!important}
   .steps{grid-template-columns:1fr 1fr;gap:20px}
   .steps::before{display:none}
