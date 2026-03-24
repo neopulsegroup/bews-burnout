@@ -320,29 +320,40 @@ button{font-family:var(--font);cursor:pointer}
 
 @media screen and (max-width: 960px) {
   .navbar {
-    padding: 12px 20px !important;
+    padding: 10px 12px !important;
     height: auto !important;
     flex-wrap: wrap !important;
     justify-content: space-between !important;
+    gap: 8px !important;
   }
   .nav-logo img {
-    height: 32px !important;
+    height: 30px !important;
   }
   .nav-links {
     display: flex !important;
     width: 100% !important;
-    order: 2 !important;
+    order: 3 !important;
     justify-content: center !important;
-    gap: 16px !important;
-    margin-top: 12px !important;
+    gap: 12px !important;
+    margin-top: 10px !important;
     border-top: 1px solid rgba(111,159,142,0.1) !important;
-    padding-top: 12px !important;
+    padding-top: 10px !important;
   }
   .nav-right {
-    order: 1 !important;
+    order: 2 !important;
+    gap: 6px !important;
+  }
+  .lang-opt {
+    padding: 6px 8px !important;
+    font-size: 11px !important;
+  }
+  .btn-login {
+    padding: 8px 12px !important;
+    font-size: 12px !important;
+    gap: 5px !important;
   }
   .page-wrap {
-    padding-top: 118px !important;
+    padding-top: 110px !important;
   }
   .sec,.sec-sm{padding:56px 24px}
   .hero-content{padding:48px 24px 80px}
