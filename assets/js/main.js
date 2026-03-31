@@ -272,7 +272,10 @@ function initContactForm() {
 
   form.addEventListener('submit', function(ev) {
     ev.preventDefault();
-    const data = new FormData(form);
+    
+    // Get data
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
     
     // UI state: loading
     btn.disabled = true;
@@ -282,24 +285,23 @@ function initContactForm() {
 
     fetch(form.action, {
       method: form.method,
-      body: data,
-      headers: { 'Accept': 'application/json' }
+      body: JSON.stringify(data),
+      headers: { 
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
     }).then(response => {
       if (response.ok) {
         status.style.color = '#6F9F8E';
-        status.textContent = currentLang === 'pt' ? 'Mensagem enviada com sucesso! Verifique o seu email para confirmar o primeiro envio.' : 
-                             (currentLang === 'es' ? '¡Mensaje enviado con éxito! Revise su correo para confirmar el primer envío.' : 
-                             'Message sent successfully! Please check your email to confirm the first submission.');
+        status.textContent = currentLang === 'pt' ? 'Mensagem enviada com sucesso!' : 
+                             (currentLang === 'es' ? '¡Mensaje enviado con éxito!' : 
+                             'Message sent successfully!');
         form.reset();
         btn.disabled = false;
       } else {
         response.json().then(data => {
           status.style.color = 'red';
-          if (Object.hasOwn(data, 'errors')) {
-            status.textContent = data["errors"].map(error => error["message"]).join(", ");
-          } else {
-            status.textContent = currentLang === 'pt' ? 'Erro ao enviar. Por favor, utilize o email hello@bewsgroup.eu' : 'Error sending message.';
-          }
+          status.textContent = data.error || (currentLang === 'pt' ? 'Erro ao enviar. Tente novamente.' : 'Error sending message.');
           btn.disabled = false;
         });
       }
