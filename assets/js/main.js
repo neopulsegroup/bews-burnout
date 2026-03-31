@@ -258,10 +258,61 @@ function setLang(l) {
   document.querySelectorAll('.lang-opt').forEach(b => {
     b.classList.toggle('active', b.dataset.lang === l);
   });
+// Language switcher (rest of the code)
   document.documentElement.lang = l;
 }
 
-// Init language on load
+// Contact Form Handler (AJAX)
+function initContactForm() {
+  const form = document.getElementById('contact-form');
+  const status = document.getElementById('form-status');
+  const btn = document.getElementById('form-submit');
+
+  if (!form) return;
+
+  form.addEventListener('submit', function(ev) {
+    ev.preventDefault();
+    const data = new FormData(form);
+    
+    // UI state: loading
+    btn.disabled = true;
+    status.style.display = 'block';
+    status.style.color = 'var(--mid)';
+    status.textContent = currentLang === 'pt' ? 'A enviar...' : (currentLang === 'es' ? 'Enviando...' : 'Sending...');
+
+    fetch(form.action, {
+      method: form.method,
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    }).then(response => {
+      if (response.ok) {
+        status.style.color = '#6F9F8E';
+        status.textContent = currentLang === 'pt' ? 'Mensagem enviada com sucesso! Verifique o seu email para confirmar o primeiro envio.' : 
+                             (currentLang === 'es' ? '¡Mensaje enviado con éxito! Revise su correo para confirmar el primer envío.' : 
+                             'Message sent successfully! Please check your email to confirm the first submission.');
+        form.reset();
+        btn.disabled = false;
+      } else {
+        response.json().then(data => {
+          status.style.color = 'red';
+          if (Object.hasOwn(data, 'errors')) {
+            status.textContent = data["errors"].map(error => error["message"]).join(", ");
+          } else {
+            status.textContent = currentLang === 'pt' ? 'Erro ao enviar. Por favor, utilize o email hello@bewsgroup.eu' : 'Error sending message.';
+          }
+          btn.disabled = false;
+        });
+      }
+    }).catch(error => {
+      status.style.color = 'red';
+      status.textContent = currentLang === 'pt' ? 'Erro de rede. Verifique a sua ligação.' : 'Network error.';
+      btn.disabled = false;
+    });
+  });
+}
+
+// Init everything on load
 document.addEventListener('DOMContentLoaded', function() {
   setLang(currentLang);
+  initContactForm(); // Initialize form handler
 });
