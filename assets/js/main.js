@@ -288,7 +288,8 @@ function initContactForm() {
       body: JSON.stringify(data),
       headers: { 
         'Accept': 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'apikey': 'sb_publishable_SX5TFjTGyGqyGhPrWOwAGQ_kZ7TGuVx'
       }
     }).then(response => {
       if (response.ok) {
