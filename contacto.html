@@ -32,19 +32,19 @@
     <div>
       <p class="eyebrow" data-i18n="con.ey">Contacto</p>
       <h2 class="sec-title" style="margin-bottom:32px" data-i18n="con.t">Fale connosco</h2>
-      <div class="cf">
+      <form class="cf" action="https://formspree.io/f/hello@bewsgroup.com" method="POST">
         <div class="field"><label data-i18n="con.name">Nome</label>
           <div class="f-row">
-            <input type="text" placeholder="Nome (obrigatório)"/>
-            <input type="text" placeholder="Sobrenome (obrigatório)"/>
+            <input type="text" name="first_name" placeholder="Nome (obrigatório)" required/>
+            <input type="text" name="last_name" placeholder="Sobrenome (obrigatório)" required/>
           </div>
         </div>
-        <div class="field"><label data-i18n="con.email">Email (obrigatório)</label><input type="email"/></div>
-        <div class="field"><label data-i18n="con.org">Organização (obrigatório)</label><input type="text"/></div>
-        <div class="field"><label data-i18n="con.msg">Mensagem (obrigatório)</label><textarea rows="4"></textarea></div>
-        <button class="btn-sage" style="padding:12px 36px" data-i18n="con.btn">Enviar</button>
+        <div class="field"><label data-i18n="con.email">Email (obrigatório)</label><input type="email" name="email" required/></div>
+        <div class="field"><label data-i18n="con.org">Organização (obrigatório)</label><input type="text" name="organization" required/></div>
+        <div class="field"><label data-i18n="con.msg">Mensagem (obrigatório)</label><textarea name="message" rows="4" required></textarea></div>
+        <button type="submit" class="btn-sage" style="padding:12px 36px" data-i18n="con.btn">Enviar</button>
         <p class="pnote" data-i18n="con.note">Os dados serão utilizados apenas para responder ao seu contacto. Ao enviar, concorda com a nossa <a href="politica-privacidade.html" style="color:var(--sage)">Política de Privacidade</a>.</p>
-      </div>
+      </form>
     </div>
     <div>
       <div class="photo" style="height:380px;margin-bottom:36px">
